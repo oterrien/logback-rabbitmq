@@ -48,7 +48,6 @@ public class RabbitMQAppender extends AppenderBase<ILoggingEvent> {
                 this.openConnection();
                 super.start();
             }
-
         } catch (Exception e) {
             String message = "Error while starting RabbitMQAppender : " + e.getMessage();
             System.err.println(message + ". Enable debug mode on logback configuration to know more");
@@ -120,7 +119,6 @@ public class RabbitMQAppender extends AppenderBase<ILoggingEvent> {
 
     @Override
     protected void append(ILoggingEvent event) {
-
         try {
             this.channel.basicPublish("", this.queue, null, this.encoder.encode(event));
         } catch (Exception e) {
